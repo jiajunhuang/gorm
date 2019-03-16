@@ -3,6 +3,7 @@ package gorm
 import "database/sql"
 
 // SQLCommon is the minimal database connection functionality gorm requires.  Implemented by *sql.DB.
+// *sql.DB 实现了这些方法
 type SQLCommon interface {
 	Exec(query string, args ...interface{}) (sql.Result, error)
 	Prepare(query string) (*sql.Stmt, error)

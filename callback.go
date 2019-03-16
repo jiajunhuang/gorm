@@ -12,6 +12,7 @@ var DefaultCallback = &Callback{}
 //   Field `queries` contains callbacks will be call when querying object with query methods like Find, First, Related, Association...
 //   Field `rowQueries` contains callbacks will be call when querying object with Row, Rows...
 //   Field `processors` contains all callback processors, will be used to generate above callbacks in order
+// 当调用Find/Update等操作时，就会调用下面的回调
 type Callback struct {
 	creates    []*func(scope *Scope)
 	updates    []*func(scope *Scope)

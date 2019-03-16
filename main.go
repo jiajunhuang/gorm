@@ -10,6 +10,7 @@ import (
 )
 
 // DB contains information for current db connection
+// 当前DB连接
 type DB struct {
 	Value        interface{}
 	Error        error
@@ -70,7 +71,7 @@ func Open(dialect string, args ...interface{}) (db *DB, err error) {
 		callbacks: DefaultCallback,
 		dialect:   newDialect(dialect, dbSQL),
 	}
-	db.parent = db
+	db.parent = db // root节点
 	if err != nil {
 		return
 	}
@@ -305,6 +306,7 @@ func (s *DB) Last(out interface{}, where ...interface{}) *DB {
 }
 
 // Find find records that match given conditions
+// 查找
 func (s *DB) Find(out interface{}, where ...interface{}) *DB {
 	return s.NewScope(out).inlineCondition(where...).callCallbacks(s.parent.callbacks.queries).db
 }

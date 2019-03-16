@@ -845,6 +845,7 @@ func (scope *Scope) prepareQuerySQL() {
 	return
 }
 
+// 追加where条件
 func (scope *Scope) inlineCondition(values ...interface{}) *Scope {
 	if len(values) > 0 {
 		scope.Search.Where(values[0], values[1:]...)

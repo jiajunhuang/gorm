@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+// 查询条件
 type search struct {
 	db               *DB
 	whereConditions  []map[string]interface{}
